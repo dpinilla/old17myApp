@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>datos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-fab vertical="top" horizontal="end" edge slot="fixed">
+    <ion-fab-button (click)="create()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+   <h2 id="centrado">Bienvenido {{nombre}}</h2>
+   <ion-card (click)="elegido(i)" *ngFor="let myDato of datos; let i = index">
+    <ion-item>
+      <ion-icon class="color" *ngIf="!mostrarElegido[i]; else noMostrar" size="large" name="chevron-down-outline"></ion-icon>
+      <ng-template #noMostrar>
+        <ion-icon id="colorUp" size="large" name="chevron-up-outline"></ion-icon>
+      </ng-template>
+      <ion-label class="color">{{myDato.datNombre}}</ion-label>
+      
+      <ion-icon color="danger" (click)="removeDatos(myDato.datId)" slot="end" name="trash-outline"></ion-icon>
+        <ion-icon color="primary" (click)="updateDatos(myDato)" slot="end" name="pencil-outline"></ion-icon>
+    </ion-item>
+    <ion-card-content>
+      
+        
+      <div *ngIf="mostrarElegido[i]">  
+        <ion-label> {{myDato.datApellido}}</ion-label>
+        <ion-label>{{myDato.datEdad}}</ion-label>
+        <div *ngIf="myDato.datEdad >= 18;else menor">Mayor de Edad</div>
+        <ng-template #menor>Menor de Edad</ng-template>
+        <ion-label>{{myDato.datDeporte}}</ion-label>
+        
+        <!-- <img src="{{myDato.imagen}} " width=50 height=50> -->
+      </div>
+    </ion-card-content>
+    
+   </ion-card>
+
+</ion-content>

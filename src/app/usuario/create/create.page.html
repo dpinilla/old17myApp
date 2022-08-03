@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>create</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <ion-item [hidden]="isUpdate" class="ion-margin-bottom">
+     <ion-input
+     type="text"
+       required
+       id="usuarioInput"
+       formControlName="usrCorreo"
+       placeholder="Correo"
+     ></ion-input>
+   </ion-item>
+ 
+   <ion-item class="ion-margin-bottom">
+    <ion-input
+      type="text"
+      placeholder="Tipo Usuario"
+      formControlName="usrTipo"
+      required
+    ></ion-input>
+  </ion-item>
+
+   <ion-item class="ion-margin-bottom">
+     <ion-input
+       type="password"
+       placeholder="Contraseña"
+       formControlName="usrContrasena"
+       required
+     ></ion-input>
+   </ion-item>
+ 
+   <ion-item class="ion-margin-bottom">
+     <ion-input
+       type="password"
+       placeholder="Confirmar Contraseña"
+       formControlName="claveConfirm"
+       required
+     ></ion-input>
+   </ion-item>
+ 
+   <ion-button
+     type="submit"
+     [disabled]="form.invalid"
+     class="ion-margin-top"
+     expand="block"
+   >
+     {{isUpdate? 'Actualizar' : 'Crear'}}
+   </ion-button>
+   </form>
+</ion-content>

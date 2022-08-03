@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>createDatos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <!-- <ion-item [hidden]="!isUpdate" class="ion-margin-bottom">
+     <ion-input
+       id="usuarioInput"
+       formControlName="datId"
+       placeholder="Id"
+     ></ion-input>
+   </ion-item> -->
+ 
+   <ion-item class="ion-margin-bottom">
+    <ion-input
+      type="text"
+      placeholder="Nombre"
+      formControlName="datNombre"
+      required
+    ></ion-input>
+  </ion-item>
+
+   <ion-item class="ion-margin-bottom">
+     <ion-input
+       type="text"
+       placeholder="Apellido"
+       formControlName="datApellido"
+       required
+     ></ion-input>
+   </ion-item>
+ 
+   <ion-item class="ion-margin-bottom">
+     <ion-input
+       type="number"
+       placeholder="Edad"
+       formControlName="datEdad"
+       required
+     ></ion-input>
+   </ion-item>
+
+   <ion-item class="ion-margin-bottom">
+    <ion-input
+      type="text"
+      placeholder="Deporte"
+      formControlName="datDeporte"
+      required
+    ></ion-input>
+  </ion-item>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-input
+      type="text"
+      placeholder="Link Imágen"
+      formControlName="datImagen"
+      required
+    ></ion-input>
+  </ion-item>
+ 
+   <ion-button
+     type="submit"
+     [disabled]="form.invalid"
+     class="ion-margin-top"
+     expand="block"
+   >
+     {{isUpdate? 'Actualizar' : 'Crear'}}
+   </ion-button>
+   </form>
+</ion-content>
